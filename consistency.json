@@ -1,0 +1,309 @@
+{
+ "schema_version": "3.0",
+ "audience": "agent",
+ "question": "привести макет к консистентности",
+ "file": {
+  "key": "lKdFEoJiOwWMaUpjTHBl6N",
+  "url": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker",
+  "version": "2383487596576305773",
+  "last_modified": "2026-08-03T13:07:00Z"
+ },
+ "order_of_work": [
+  "1. решить, какой ширины мастер — до этого правки значений бессмысленны",
+  "2. завести механизм: текстовые стили и компоненты",
+  "3. чинить дефекты, не зависящие от масштаба"
+ ],
+ "root_cause": {
+  "hypothesis": "430 → 375",
+  "factor": 0.872093,
+  "fractional_total": 4140,
+  "explained": 3805,
+  "explained_pct": 91.9,
+  "by_kind": {
+   "радиусы": {
+    "fractional": 508,
+    "explained": 494,
+    "examples": [
+     {
+      "есть": 3.49,
+      "было": 4.0,
+      "узлов": 66
+     },
+     {
+      "есть": 6.1,
+      "было": 7.0,
+      "узлов": 64
+     },
+     {
+      "есть": 24.42,
+      "было": 28.0,
+      "узлов": 52
+     }
+    ]
+   },
+   "кегли": {
+    "fractional": 2038,
+    "explained": 1779,
+    "examples": [
+     {
+      "есть": 6.1,
+      "было": 7.0,
+      "узлов": 232
+     },
+     {
+      "есть": 10.47,
+      "было": 12.0,
+      "узлов": 159
+     },
+     {
+      "есть": 11.34,
+      "было": 13.0,
+      "узлов": 145
+     }
+    ]
+   },
+   "отступы": {
+    "fractional": 1439,
+    "explained": 1439,
+    "examples": [
+     {
+      "есть": 1.74,
+      "было": 2.0,
+      "узлов": 164
+     },
+     {
+      "есть": 8.72,
+      "было": 10.0,
+      "узлов": 106
+     },
+     {
+      "есть": 10.47,
+      "было": 12.0,
+      "узлов": 101
+     }
+    ]
+   },
+   "обводки": {
+    "fractional": 155,
+    "explained": 93,
+    "examples": [
+     {
+      "есть": 0.87,
+      "было": 1.0,
+      "узлов": 55
+     },
+     {
+      "есть": 1.74,
+      "было": 2.0,
+      "узлов": 38
+     },
+     {
+      "есть": 1.31,
+      "было": 1.5,
+      "узлов": 18
+     }
+    ]
+   }
+  },
+  "alternatives": [
+   {
+    "transform": "375 → 390",
+    "explains_pct": 0.7
+   },
+   {
+    "transform": "390 → 375",
+    "explains_pct": 0.2
+   },
+   {
+    "transform": "уменьшение вдвое",
+    "explains_pct": 0.2
+   }
+  ]
+ },
+ "structure": {
+  "nodes": 3442,
+  "channels": [
+   {
+    "what": "заливки",
+    "bound": 2432,
+    "of": 3442,
+    "pct": 70.7,
+    "verdict": "связаны переменными"
+   },
+   {
+    "what": "обводки",
+    "bound": 102,
+    "of": 3442,
+    "pct": 3.0,
+    "verdict": "связаны переменными"
+   },
+   {
+    "what": "текстовые стили",
+    "bound": 27,
+    "of": 1927,
+    "pct": 1.4,
+    "verdict": "стилей нет — кегли ничем не удерживаются"
+   },
+   {
+    "what": "инстансы компонентов",
+    "bound": 76,
+    "of": 3077,
+    "pct": 2.5,
+    "verdict": "почти всё нарисовано вручную"
+   }
+  ]
+ },
+ "defects": [
+  {
+   "id": "D1",
+   "title": "Компоненты шире объявленного мастера",
+   "count": 5,
+   "detail": "Choice Row и Paywall Benefit Row — 378 при мастере 375",
+   "fix": "поставить ширину 375 пяти вариантам",
+   "nodes": [
+    {
+     "id": "23:2",
+     "name": "State=Default",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-2",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Choice Row",
+     "height": 58.0
+    },
+    {
+     "id": "23:7",
+     "name": "State=Selected",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-7",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Choice Row",
+     "height": 58.0
+    },
+    {
+     "id": "176:18",
+     "name": "Tone=Info",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-18",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    },
+    {
+     "id": "176:23",
+     "name": "Tone=AI",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-23",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    },
+    {
+     "id": "176:28",
+     "name": "Tone=Money",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-28",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "title": "Прототип онбординга не собран",
+   "count": 7,
+   "detail": "связаны только экраны 08–13. У 01–07 нет исходящих переходов. Точка входа названа «Onboarding · 01 Welcome», но ведёт на узел 12:2 — доску 6444×1320, а не на экран",
+   "fix": "связать 01→02→…→08 и переставить точку входа на экран Welcome",
+   "nodes": []
+  },
+  {
+   "id": "D3",
+   "title": "Подписи кнопок нечитаемы",
+   "count": 2,
+   "detail": "#FFFFFF на #EEF0EB, контраст 1,15 при норме 4,5",
+   "fix": "цвет текста #101211",
+   "nodes": [
+    {
+     "id": "133:104",
+     "name": "Download / Label",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-104"
+    },
+    {
+     "id": "133:108",
+     "name": "Print / Label",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-108"
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "title": "Экраны без входящих переходов",
+   "count": 3,
+   "detail": "02.3C — Send invoice actions, 02.3E — Invoice send failed, 02 — Product",
+   "fix": "подключить переходом или удалить — решение продуктовое",
+   "nodes": [
+    {
+     "id": "392:848",
+     "name": "02.3C — Send invoice actions",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "Section / Documents",
+     "screen": "02.3C — Send invoice actions",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=392-848",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    },
+    {
+     "id": "497:917",
+     "name": "02.3E — Invoice send failed",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "02.3E — Invoice send failed",
+     "screen": "02.3E — Invoice send failed",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=497-917",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    },
+    {
+     "id": "13:2",
+     "name": "02 — Product",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "02 — Product",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=13-2",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    }
+   ]
+  }
+ ]
+}

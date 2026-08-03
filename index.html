@@ -1,0 +1,439 @@
+<title>Консистентность макета · Invoice Maker</title>
+<style>
+:root{--paper:#FAFAF7;--paper-2:#F1F2ED;--ink:#12150F;--ink-2:#5A625A;--ink-3:#818A7E;
+--rule:#C9CEC8;--ok:#5F8420;--crit:#8C2F2F;--warn:#A4552A;--accent:#6E9425;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--paper:#121410;--paper-2:#191C15;--ink:#E9ECE2;
+--ink-2:#9AA396;--ink-3:#767E72;--rule:#2F342B;--ok:#A8CE5C;--crit:#DE7676;--warn:#DD9160;--accent:#A8CE5C}}
+:root[data-theme="dark"]{--paper:#121410;--paper-2:#191C15;--ink:#E9ECE2;--ink-2:#9AA396;
+--ink-3:#767E72;--rule:#2F342B;--ok:#A8CE5C;--crit:#DE7676;--warn:#DD9160;--accent:#A8CE5C}
+:root[data-theme="light"]{--paper:#FAFAF7;--paper-2:#F1F2ED;--ink:#12150F;--ink-2:#5A625A;
+--ink-3:#818A7E;--rule:#C9CEC8;--ok:#5F8420;--crit:#8C2F2F;--warn:#A4552A;--accent:#6E9425}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+.sheet{max-width:800px;margin:0 auto;padding:44px 24px 88px}
+@media (max-width:640px){.sheet{padding:24px 14px 56px}}
+h1{font-size:clamp(25px,4vw,34px);line-height:1.12;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+color:var(--ink-3);margin:0}
+h3{font-size:17px;margin:0;line-height:1.3;text-wrap:balance}
+p{margin:0;max-width:66ch}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.lede{font-size:17px;color:var(--ink-2);max-width:66ch}
+header{display:flex;flex-direction:column;gap:14px;padding-bottom:24px;border-bottom:2px solid var(--ink)}
+section{display:flex;flex-direction:column;gap:16px;padding-top:30px;margin-top:30px;border-top:1px solid var(--rule)}
+.big{font-family:var(--mono);font-size:clamp(34px,7vw,54px);line-height:1;color:var(--crit);letter-spacing:-.03em}
+.card{border:1px solid var(--rule);background:var(--paper-2);padding:17px 19px;
+display:flex;flex-direction:column;gap:10px}
+.card.cause{border-left:4px solid var(--crit)}
+.card.struct{border-left:4px solid var(--warn)}
+.card.real{border-left:4px solid var(--ok)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:6px 12px 6px 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;padding-right:16px}
+.scroller{overflow-x:auto}
+pre{margin:0;background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--accent);
+padding:12px 14px;font-family:var(--mono);font-size:12.5px;line-height:1.5;
+white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink-2)}
+.plabel{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.bar{height:14px;background:var(--rule);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--ok);display:block}
+.bar.low i{background:var(--crit)}
+.note{border:1px solid var(--rule);border-left:3px solid var(--ink-3);padding:13px 15px;
+background:var(--paper-2);font-size:14.5px;color:var(--ink-2)}
+a{color:var(--accent)}
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+</style>
+<div class="sheet"><header>
+<div class="eyebrow">Invoice Maker · 2026-08-03 · для агента: <a href="consistency.json">consistency.json</a></div>
+<h1>Одна причина, а не тысяча нарушений</h1>
+<p class="lede">В макете 4140 дробных значений — радиусы вроде 17,44, кегли 10,47, отступы 8,72. Считать их по одному бессмысленно: <b>91.9 % объясняются одним действием</b>. Файл нарисован на 430 pt и сжат до 375.</p>
+</header>
+<section><h2>1 · Причина</h2>
+<div class="big">91.9 %</div>
+<p>дробных значений — след одного масштабирования (коэффициент 0.872093). Не тысяча ошибок дизайнера, а одна операция.</p>
+<div class="scroller"><table><thead><tr><th>Что</th><th class="n">дробных</th><th class="n">от сжатия</th><th>примеры</th></tr></thead><tbody>
+<tr><td>радиусы</td><td class="n">508</td><td class="n">97 %</td><td><small>3.49 ← 4.0 · 6.1 ← 7.0</small></td></tr>
+<tr><td>кегли</td><td class="n">2038</td><td class="n">87 %</td><td><small>6.1 ← 7.0 · 10.47 ← 12.0</small></td></tr>
+<tr><td>отступы</td><td class="n">1439</td><td class="n">100 %</td><td><small>1.74 ← 2.0 · 8.72 ← 10.0</small></td></tr>
+<tr><td>обводки</td><td class="n">155</td><td class="n">60 %</td><td><small>0.87 ← 1.0 · 1.74 ← 2.0</small></td></tr>
+</tbody></table></div>
+<p><small>Проверены и отвергнуты: 375 → 390 0.7 % · 390 → 375 0.2 % · уменьшение вдвое 0.2 %.</small></p>
+<div class="card cause">
+<h3>Что это значит для работы</h3>
+<p>Округлять значения по одному — это тысячи правок, которые вернут тот же результат при следующем масштабировании. Решение принимается один раз и на уровне мастера.</p>
+<div class="plabel">Вопрос дизайнеру</div>
+<pre>Макет нарисован на 430 pt и сжат до 375. Отсюда все дробные
+значения: 17,44 = 20 × 0,872, 10,47 = 12 × 0,872 и так далее.
+
+Что делаем:
+  A. Мастер остаётся 375 — пересобрать на 375 из целых чисел.
+  B. Мастер становится 430 — вернуть исходный размер, переобъявить
+     токены под 430, сжимать только на экспорте.
+
+До этого ответа правки радиусов, отступов и кеглей не начинать:
+любая из них будет отменена выбором.</pre>
+</div></section>
+<section><h2>2 · Почему разойдётся снова</h2>
+<p>Значение, привязанное к переменной, стилю или компоненту, не может разъехаться. Нарисованное вручную — разъедется всегда. Из 3442 узлов в охвате:</p>
+<div class="scroller"><table><thead><tr><th>Канал</th><th class="n">связано</th><th style="width:34%"></th><th>вывод</th></tr></thead><tbody>
+<tr><td>заливки</td><td class="n">70.7 %</td><td><span class="bar"><i style="width:70.7%"></i></span></td><td><small>связаны переменными</small></td></tr>
+<tr><td>обводки</td><td class="n">3.0 %</td><td><span class="bar low"><i style="width:3.0%"></i></span></td><td><small>связаны переменными</small></td></tr>
+<tr><td>текстовые стили</td><td class="n">1.4 %</td><td><span class="bar low"><i style="width:1.4%"></i></span></td><td><small>стилей нет — кегли ничем не удерживаются</small></td></tr>
+<tr><td>инстансы компонентов</td><td class="n">2.5 %</td><td><span class="bar low"><i style="width:2.5%"></i></span></td><td><small>почти всё нарисовано вручную</small></td></tr>
+</tbody></table></div>
+<div class="card struct">
+<h3>Корень расхождения</h3>
+<p>Цвета держатся: 72 % заливок привязаны к переменным, и именно поэтому палитра почти не плывёт. Кегли не держатся ничем — текстовых стилей в файле ноль, отсюда 129 сочетаний размера и начертания. Компонентов 2 % — всё остальное копии.</p>
+<div class="plabel">Промпт агенту · после ответа по мастеру</div>
+<pre>Файл Figma lKdFEoJiOwWMaUpjTHBl6N.
+
+1. Собери текстовые стили из фактического употребления: возьми
+   кегли, покрывающие 80 % текстов, назови их и привяжи узлы.
+2. Повторяющиеся блоки (карточка документа, строка клиента,
+   поле ввода) преврати в компоненты и замени копии инстансами.
+
+Не выравнивай значения по одному — сначала механизм, потом числа.</pre>
+</div></section>
+<section><h2>3 · Сломано независимо от масштаба</h2>
+<p>Эти дефекты не исчезнут после решения по мастеру. Их можно чинить сразу.</p>
+<div class="card real">
+<h3>Компоненты шире объявленного мастера</h3>
+<p>Choice Row и Paywall Benefit Row — 378 при мастере 375</p>
+<p><small><b>Чинить:</b> поставить ширину 375 пяти вариантам</small></p>
+<p><small><a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-2">State=Default</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-7">State=Selected</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-18">Tone=Info</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-23">Tone=AI</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-28">Tone=Money</a></small></p>
+</div>
+<div class="card real">
+<h3>Прототип онбординга не собран</h3>
+<p>связаны только экраны 08–13. У 01–07 нет исходящих переходов. Точка входа названа «Onboarding · 01 Welcome», но ведёт на узел 12:2 — доску 6444×1320, а не на экран</p>
+<p><small><b>Чинить:</b> связать 01→02→…→08 и переставить точку входа на экран Welcome</small></p>
+</div>
+<div class="card real">
+<h3>Подписи кнопок нечитаемы</h3>
+<p>#FFFFFF на #EEF0EB, контраст 1,15 при норме 4,5</p>
+<p><small><b>Чинить:</b> цвет текста #101211</small></p>
+<p><small><a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-104">Download / Label</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-108">Print / Label</a></small></p>
+</div>
+<div class="card real">
+<h3>Экраны без входящих переходов</h3>
+<p>02.3C — Send invoice actions, 02.3E — Invoice send failed, 02 — Product</p>
+<p><small><b>Чинить:</b> подключить переходом или удалить — решение продуктовое</small></p>
+<p><small><a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=392-848">02.3C — Send invoice actions</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=497-917">02.3E — Invoice send failed</a> · <a href="https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=13-2">02 — Product</a></small></p>
+</div>
+</section>
+<section><h2>Данные</h2>
+<p><small>Машинный вид — <a href="consistency.json">consistency.json</a>: гипотеза с коэффициентом, разбивка по видам значений, доли связности и список независимых дефектов с node_id. Всё получено обходом файла через Figma API.</small></p>
+<script type="application/json" id="consistency-data">
+{
+ "schema_version": "3.0",
+ "audience": "agent",
+ "question": "привести макет к консистентности",
+ "file": {
+  "key": "lKdFEoJiOwWMaUpjTHBl6N",
+  "url": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker",
+  "version": "2383487596576305773",
+  "last_modified": "2026-08-03T13:07:00Z"
+ },
+ "order_of_work": [
+  "1. решить, какой ширины мастер — до этого правки значений бессмысленны",
+  "2. завести механизм: текстовые стили и компоненты",
+  "3. чинить дефекты, не зависящие от масштаба"
+ ],
+ "root_cause": {
+  "hypothesis": "430 → 375",
+  "factor": 0.872093,
+  "fractional_total": 4140,
+  "explained": 3805,
+  "explained_pct": 91.9,
+  "by_kind": {
+   "радиусы": {
+    "fractional": 508,
+    "explained": 494,
+    "examples": [
+     {
+      "есть": 3.49,
+      "было": 4.0,
+      "узлов": 66
+     },
+     {
+      "есть": 6.1,
+      "было": 7.0,
+      "узлов": 64
+     },
+     {
+      "есть": 24.42,
+      "было": 28.0,
+      "узлов": 52
+     }
+    ]
+   },
+   "кегли": {
+    "fractional": 2038,
+    "explained": 1779,
+    "examples": [
+     {
+      "есть": 6.1,
+      "было": 7.0,
+      "узлов": 232
+     },
+     {
+      "есть": 10.47,
+      "было": 12.0,
+      "узлов": 159
+     },
+     {
+      "есть": 11.34,
+      "было": 13.0,
+      "узлов": 145
+     }
+    ]
+   },
+   "отступы": {
+    "fractional": 1439,
+    "explained": 1439,
+    "examples": [
+     {
+      "есть": 1.74,
+      "было": 2.0,
+      "узлов": 164
+     },
+     {
+      "есть": 8.72,
+      "было": 10.0,
+      "узлов": 106
+     },
+     {
+      "есть": 10.47,
+      "было": 12.0,
+      "узлов": 101
+     }
+    ]
+   },
+   "обводки": {
+    "fractional": 155,
+    "explained": 93,
+    "examples": [
+     {
+      "есть": 0.87,
+      "было": 1.0,
+      "узлов": 55
+     },
+     {
+      "есть": 1.74,
+      "было": 2.0,
+      "узлов": 38
+     },
+     {
+      "есть": 1.31,
+      "было": 1.5,
+      "узлов": 18
+     }
+    ]
+   }
+  },
+  "alternatives": [
+   {
+    "transform": "375 → 390",
+    "explains_pct": 0.7
+   },
+   {
+    "transform": "390 → 375",
+    "explains_pct": 0.2
+   },
+   {
+    "transform": "уменьшение вдвое",
+    "explains_pct": 0.2
+   }
+  ]
+ },
+ "structure": {
+  "nodes": 3442,
+  "channels": [
+   {
+    "what": "заливки",
+    "bound": 2432,
+    "of": 3442,
+    "pct": 70.7,
+    "verdict": "связаны переменными"
+   },
+   {
+    "what": "обводки",
+    "bound": 102,
+    "of": 3442,
+    "pct": 3.0,
+    "verdict": "связаны переменными"
+   },
+   {
+    "what": "текстовые стили",
+    "bound": 27,
+    "of": 1927,
+    "pct": 1.4,
+    "verdict": "стилей нет — кегли ничем не удерживаются"
+   },
+   {
+    "what": "инстансы компонентов",
+    "bound": 76,
+    "of": 3077,
+    "pct": 2.5,
+    "verdict": "почти всё нарисовано вручную"
+   }
+  ]
+ },
+ "defects": [
+  {
+   "id": "D1",
+   "title": "Компоненты шире объявленного мастера",
+   "count": 5,
+   "detail": "Choice Row и Paywall Benefit Row — 378 при мастере 375",
+   "fix": "поставить ширину 375 пяти вариантам",
+   "nodes": [
+    {
+     "id": "23:2",
+     "name": "State=Default",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-2",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Choice Row",
+     "height": 58.0
+    },
+    {
+     "id": "23:7",
+     "name": "State=Selected",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=23-7",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Choice Row",
+     "height": 58.0
+    },
+    {
+     "id": "176:18",
+     "name": "Tone=Info",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-18",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    },
+    {
+     "id": "176:23",
+     "name": "Tone=AI",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-23",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    },
+    {
+     "id": "176:28",
+     "name": "Tone=Money",
+     "type": "COMPONENT",
+     "page": "00 — Foundations",
+     "block": "Section / Components",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=176-28",
+     "observed": 378.0,
+     "expected": 375.0,
+     "property": "width",
+     "component_set": "Paywall Benefit Row",
+     "height": 42.0
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "title": "Прототип онбординга не собран",
+   "count": 7,
+   "detail": "связаны только экраны 08–13. У 01–07 нет исходящих переходов. Точка входа названа «Onboarding · 01 Welcome», но ведёт на узел 12:2 — доску 6444×1320, а не на экран",
+   "fix": "связать 01→02→…→08 и переставить точку входа на экран Welcome",
+   "nodes": []
+  },
+  {
+   "id": "D3",
+   "title": "Подписи кнопок нечитаемы",
+   "count": 2,
+   "detail": "#FFFFFF на #EEF0EB, контраст 1,15 при норме 4,5",
+   "fix": "цвет текста #101211",
+   "nodes": [
+    {
+     "id": "133:104",
+     "name": "Download / Label",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-104"
+    },
+    {
+     "id": "133:108",
+     "name": "Print / Label",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=133-108"
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "title": "Экраны без входящих переходов",
+   "count": 3,
+   "detail": "02.3C — Send invoice actions, 02.3E — Invoice send failed, 02 — Product",
+   "fix": "подключить переходом или удалить — решение продуктовое",
+   "nodes": [
+    {
+     "id": "392:848",
+     "name": "02.3C — Send invoice actions",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "Section / Documents",
+     "screen": "02.3C — Send invoice actions",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=392-848",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    },
+    {
+     "id": "497:917",
+     "name": "02.3E — Invoice send failed",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "02.3E — Invoice send failed",
+     "screen": "02.3E — Invoice send failed",
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=497-917",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    },
+    {
+     "id": "13:2",
+     "name": "02 — Product",
+     "type": "FRAME",
+     "page": "02 — Product",
+     "block": "02 — Product",
+     "screen": null,
+     "link": "https://www.figma.com/design/lKdFEoJiOwWMaUpjTHBl6N/Invoice-Maker?node-id=13-2",
+     "observed": 0,
+     "expected": 1,
+     "property": "incoming transitions"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</section>
+<footer>Предыдущий аудит считал нарушения по девятнадцати метрикам — он мерил следствия этого же сжатия. Его история сохранена в <a href="audit.json">audit.json</a>.</footer></div>
